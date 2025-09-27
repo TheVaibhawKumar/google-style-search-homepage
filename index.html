@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dhoondo</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #fff;
+        --text: #202124cc;
+        --subtle: #5f6368;
+        --border: #dadce0;
+        --ring: rgba(26, 115, 232, 0.3);
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.08);
+        --font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font);
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.5;
+      }
+      a {
+        color: #1a73e8;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .hdr {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+      .hdr-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .hdr-link {
+        color: var(--text);
+      }
+      .hdr-link:hover {
+        text-decoration: underline;
+      }
+      .apps {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        border-radius: 20px;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+      }
+      .apps:hover {
+        background: #f1f3f4;
+      }
+      .apps svg {
+        width: 18px;
+        height: 18px;
+        fill: #5f6368;
+      }
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: #e8f0fe;
+        color: #1a73e8;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .avatar:hover {
+        filter: brightness(0.98);
+      }
+
+      /* Main */
+      .main {
+        min-height: calc(100dvh - 120px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        padding: 0 16px;
+      }
+      .brand {
+        font-size: 60px;
+        line-height: 1;
+        margin: 0;
+        letter-spacing: -0.5px;
+        font-weight: 500;
+      }
+
+      /* Search */
+      .search {
+        width: 100%;
+        max-width: 584px;
+        text-align: center;
+      }
+      .search-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 10px 14px;
+        transition: box-shadow 120ms ease, border-color 120ms ease;
+      }
+      .search-box:focus-within {
+        border-color: #dfe1e5;
+        box-shadow: var(--shadow);
+      }
+      .search-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: var(--text);
+        min-width: 0;
+        padding: 4px 0;
+      }
+      .icon-left {
+        display: inline-flex;
+        width: 20px;
+        height: 20px;
+        color: #5f6368;
+      }
+      .icon-btn {
+        border: none;
+        background: transparent;
+        padding: 6px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon-btn:hover {
+        background: #f1f3f4;
+      }
+      .icon {
+        width: 20px;
+        height: 20px;
+        color: #5f6368;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .btn {
+        background: #f8f9fa;
+        border: 1px solid #f8f9fa;
+        color: #3c4043;
+        padding: 9px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .btn:hover {
+        border-color: #dadce0;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      }
+      .btn:focus {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+      }
+
+      .langs {
+        font-size: 13px;
+        color: #3c4043;
+        margin: 24px 0 0;
+      }
+      .langs a {
+        margin-left: 6px;
+      }
+
+      .ftr {
+        margin-top: auto;
+        background: #f2f2f2;
+        color: #70757a;
+        font-size: 14px;
+      }
+      .ftr-row {
+        padding: 12px 24px;
+      }
+      .ftr-geo {
+        border-bottom: 1px solid #dadce0;
+      }
+      .ftr-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .ftr-left,
+      .ftr-right {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .ftr a {
+        color: #70757a;
+      }
+      .ftr a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 600px) {
+        .brand {
+          font-size: 48px;
+        }
+        .hdr {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hdr">
+      <nav class="hdr-right" aria-label="Header">
+        <a class="hdr-link" href="#">Gmail</a>
+        <a class="hdr-link" href="#">Images</a>
+        <button class="apps" aria-label="Apps">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <g fill="#5f6368">
+              <circle cx="5" cy="5" r="1.5" />
+              <circle cx="12" cy="5" r="1.5" />
+              <circle cx="19" cy="5" r="1.5" />
+              <circle cx="5" cy="12" r="1.5" />
+              <circle cx="12" cy="12" r="1.5" />
+              <circle cx="19" cy="12" r="1.5" />
+              <circle cx="5" cy="19" r="1.5" />
+              <circle cx="12" cy="19" r="1.5" />
+              <circle cx="19" cy="19" r="1.5" />
+            </g>
+          </svg>
+        </button>
+        <button class="avatar" aria-label="Account">
+          <span class="avatar-initial">V</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <div class="tiranga-band">
+        <h1 class="brand no-bg" aria-label="Dhoondo">Dhoondo</h1>
+      </div>
+      <form
+        class="search"
+        role="dhoondo"
+        action="https://www.google.com/search"
+        method="GET"
+      >
+        <div class="search-box">
+          <span class="icon-left" aria-hidden="true">
+            <svg
+              class="icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+              width="20"
+              height="20"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <path
+                d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"
+              />
+            </svg>
+          </span>
+
+          <input
+            aria-label="Search"
+            name="q"
+            type="text"
+            autocomplete="on"
+            spellcheck="false"
+            class="search-input"
+          />
+
+          <button type="button" class="icon-btn" aria-label="Search by voice">
+            <svg
+              class="icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+              width="20"
+              height="20"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <path
+                d="M320 64C267 64 224 107 224 160L224 288C224 341 267 384 320 384C373 384 416 341 416 288L416 160C416 107 373 64 320 64zM176 248C176 234.7 165.3 224 152 224C138.7 224 128 234.7 128 248L128 288C128 385.9 201.3 466.7 296 478.5L296 528L248 528C234.7 528 224 538.7 224 552C224 565.3 234.7 576 248 576L392 576C405.3 576 416 565.3 416 552C416 538.7 405.3 528 392 528L344 528L344 478.5C438.7 466.7 512 385.9 512 288L512 248C512 234.7 501.3 224 488 224C474.7 224 464 234.7 464 248L464 288C464 367.5 399.5 432 320 432C240.5 432 176 367.5 176 288L176 248z"
+              />
+            </svg>
+          </button>
+
+          <button type="button" class="icon-btn" aria-label="Search by image">
+            <svg
+              class="icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+              width="20"
+              height="20"
+              focusable="false"
+              aria-hidden="true"
+            >
+              <path
+                d="M213.1 128.8L202.7 160L128 160C92.7 160 64 188.7 64 224L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 224C576 188.7 547.3 160 512 160L437.3 160L426.9 128.8C420.4 109.2 402.1 96 381.4 96L258.6 96C237.9 96 219.6 109.2 213.1 128.8zM320 256C373 256 416 299 416 352C416 405 373 448 320 448C267 448 224 405 224 352C224 299 267 256 320 256z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="actions">
+          <button class="btn" type="submit">Search</button>
+          <button class="btn" type="submit" name="btnI" value="I">
+            I'm Feeling Lucky
+          </button>
+        </div>
+
+        <p class="langs">
+          Offered in:
+          <a href="#" lang="hi">हिन्दी</a>
+          <a href="#" lang="bn">বাংলা</a>
+          <a href="#" lang="te">తెలుగు</a>
+          <a href="#" lang="mr">मराठी</a>
+          <a href="#" lang="ta">தமிழ்</a>
+        </p>
+      </form>
+    </main>
+
+    <footer class="ftr">
+      <div class="ftr-row ftr-geo">India</div>
+      <div class="ftr-row ftr-links">
+        <div class="ftr-left">
+          <a href="#">Advertising</a>
+          <a href="#">Business</a>
+          <a href="#">How Search works</a>
+        </div>
+        <div class="ftr-right">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Settings</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
